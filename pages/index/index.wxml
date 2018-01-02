@@ -1,0 +1,9 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="bottom-bar">
+    <button class="main-button"> 查询我的剪切板 </button>
+    <button class="main-button"> 新建剪切板 </button>
+    <button class="main-button"> 帮助 </button>
+  </view>
+  
+</view>

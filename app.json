@@ -1,0 +1,30 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#379392",
+    "navigationBarTitleText": "跨平台剪切板",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "selectedColor":"#379392",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "查询"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "新建"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "帮助"
+      }
+    ]
+  },
+  "debug":true
+}
