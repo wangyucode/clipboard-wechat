@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="container">
-  <input type='number' placeholder="查询码" value='{{queryNumber>0?queryNumber:""}}'></input>
+  <input type='number' placeholder="查询码" value='{{queryNumber>0?queryNumber:""}}' bindinput='bindInput'></input>
   <button type='primary' wx:if="{{!isShowResult}}" bindtap='query' loading='{{isLoading}}'>查询</button>
   <button wx:if="{{!isShowResult}}" bindtap='create'>新建</button>
   <textarea wx:if='{{isShowResult}}' value='{{text}}'></textarea>
