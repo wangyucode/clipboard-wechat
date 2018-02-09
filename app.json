@@ -1,7 +1,7 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/help/help"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -10,21 +10,17 @@
     "navigationBarTextStyle": "white"
   },
   "tabBar": {
-    "selectedColor":"#379392",
+    "selectedColor": "#379392",
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "查询"
+        "text": "剪切板"
       },
       {
-        "pagePath": "pages/logs/logs",
-        "text": "新建"
-      },
-      {
-        "pagePath": "pages/logs/logs",
+        "pagePath": "pages/help/help",
         "text": "帮助"
       }
     ]
   },
-  "debug":true
+  "debug": true
 }
