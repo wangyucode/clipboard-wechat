@@ -20,6 +20,12 @@ Page({
     })
   },
 
+  bindInputText: function (e) {
+    this.setData({
+      text: e.detail.value
+    })
+  },
+
   query: function () {
     if (this.data.queryNumber <= 0) {
       wx.showToast({
@@ -30,6 +36,9 @@ Page({
     }
 
     var that = this;
+    wx.showLoading({
+      title: '请稍后...',
+    })
     wx.request({
       url: 'https://wycode.cn/web/api/public/clipboard/query',
       data: { 'id': this.data.queryNumber },
@@ -52,6 +61,9 @@ Page({
           title: res,
           icon: 'none'
         });
+      },
+      complete:function(){
+        wx.hideLoading();
       }
     });
 
@@ -59,6 +71,9 @@ Page({
 
   create: function () {
     var that = this;
+    wx.showLoading({
+      title: '请稍后...',
+    })
     wx.request({
       url: 'https://wycode.cn/web/api/public/clipboard/create',
       method: 'POST',
@@ -76,12 +91,51 @@ Page({
           title: res.errMsg,
           icon: 'none'
         });
+      },
+      complete:function(){
+        wx.hideLoading();
       }
     });
   },
 
   save: function () {
+    var that = this;
+    wx.showLoading({
+      title: '请稍后...',
+    })
+    wx.request({
+      url: 'https://wycode.cn/web/api/public/clipboard/save',
+      method: 'POST',
+      data:{
+        id: that.data.queryNumber,
+        content: that.data.text
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
 
+        that.setData({
+          isShowResult: false,
+          queryNumber: res.data.data.id,
+          text: res.data.data.content
+        });
+        wx.showToast({
+          title: '保存成功！',
+          icon: 'success'
+        });
+
+      },
+      fail: function (res) {
+        wx.showToast({
+          title: res.errMsg,
+          icon: 'none'
+        });
+      },
+      complete: function () {
+        wx.hideLoading();
+      }
+    });
   }
 
 })
