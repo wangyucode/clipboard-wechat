@@ -1,8 +1,23 @@
 /**index.wxss**/
-input{
-  width: 100%
+
+input {
+  border: 1px solid;
+  border-radius: 10rpx;
+  border-color: #ddd;
+  padding: 10rpx;
+  width: 96%;
 }
 
-button{
-  width: 100%
+button {
+  margin-top: 24rpx;
+  width: 100%;
+}
+
+textarea{
+  border: 1px solid;
+  border-radius: 10rpx;
+  border-color: #ddd;
+  padding: 10rpx;
+  width: 96%;
+  margin-top: 24rpx;
 }

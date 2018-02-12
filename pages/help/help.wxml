@@ -1,6 +1,0 @@
-<!--pages/help/help.wxml-->
-<view class='container'>
-  <text>请访问 https://wycode.cn/clipboard 并使用查询码查看自己的剪切板。</text>
-  <text>更新日志</text>
-  <text>1.0版上线</text>
-</view>

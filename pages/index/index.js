@@ -135,6 +135,12 @@ Page({
         wx.hideLoading();
       }
     });
+  },
+
+  back: function () {
+    this.setData({
+      isShowResult: false
+    })
   }
 
 })

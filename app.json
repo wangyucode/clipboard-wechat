@@ -1,26 +1,12 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/help/help"
+    "pages/index/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#379392",
     "navigationBarTitleText": "跨平台剪切板",
     "navigationBarTextStyle": "white"
-  },
-  "tabBar": {
-    "selectedColor": "#379392",
-    "list": [
-      {
-        "pagePath": "pages/index/index",
-        "text": "剪切板"
-      },
-      {
-        "pagePath": "pages/help/help",
-        "text": "帮助"
-      }
-    ]
   },
   "debug": true
 }
