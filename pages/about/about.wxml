@@ -1,0 +1,8 @@
+<!--pages/about/about.wxml-->
+<view>
+  <scroll-view >
+    <rich-text nodes='{{releaseNote}}'/>
+  </scroll-view>
+  <view class='jj'></view>
+  <button>帮助</button>
+</view>

@@ -1,12 +1,30 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index",
+    "pages/about/about"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#379392",
     "navigationBarTitleText": "跨平台剪切板",
     "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "selectedColor":"#379392",
+    "list": [
+      {
+        "iconPath": "assets/icon/activity.png",
+        "selectedIconPath": "assets/icon/activity_fill.png",
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "iconPath": "assets/icon/people.png",
+        "selectedIconPath": "assets/icon/people_fill.png",
+        "pagePath": "pages/about/about",
+        "text": "关于"
+      }
+    ]
   },
   "debug": true
 }
