@@ -40,7 +40,31 @@ const releaseNote = {
               children: [
                 {
                   type: 'text',
-                  text: '增加帮助'
+                  text: '增加使用帮助'
+                }
+              ]
+            },
+            {
+              name: 'li',
+              attrs: {
+                style: 'font-size: 12px;'
+              },
+              children: [
+                {
+                  type: 'text',
+                  text: '增加意见反馈'
+                }
+              ]
+            },
+            {
+              name: 'li',
+              attrs: {
+                style: 'font-size: 12px;'
+              },
+              children: [
+                {
+                  type: 'text',
+                  text: '增加复制到系统剪切板功能'
                 }
               ]
             },
@@ -64,7 +88,7 @@ const releaseNote = {
               children: [
                 {
                   type: 'text',
-                  text: '支持游客创建剪切板及查询功能。'
+                  text: '支持创建剪切板及查询功能。'
                 }
               ]
             }

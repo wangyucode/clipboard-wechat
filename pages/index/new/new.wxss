@@ -1,0 +1,17 @@
+/* pages/index/new/new.wxss */
+view{
+  padding: 48rpx;
+}
+
+button{
+  margin-top: 24rpx
+}
+
+textarea{
+  border: 1px solid;
+  border-radius: 10rpx;
+  border-color: #ddd;
+  padding: 10rpx;
+  width: 96%;
+  margin-top: 24rpx
+}

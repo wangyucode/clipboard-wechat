@@ -5,7 +5,6 @@ const app = getApp()
 Page({
   data: {
     queryNumber: -1,
-    isShowResult: false,
     text: ''
   },
 
@@ -16,12 +15,6 @@ Page({
   bindInput: function (e) {
     this.setData({
       queryNumber: e.detail.value
-    })
-  },
-
-  bindInputText: function (e) {
-    this.setData({
-      text: e.detail.value
     })
   },
 
@@ -48,10 +41,8 @@ Page({
             icon: 'none'
           });
         } else {
-          that.setData({
-            isShowResult: true,
-            queryNumber: res.data.data.id,
-            text: res.data.data.content
+          wx.navigateTo({
+            url: '/pages/index/new/new?queryNumber=' + res.data.data.id + '&text=' + res.data.data.content,
           });
         }
       },
@@ -78,10 +69,8 @@ Page({
       method: 'POST',
       success: function (res) {
 
-        that.setData({
-          isShowResult: true,
-          queryNumber: res.data.data.id,
-          text: res.data.data.content
+        wx.navigateTo({
+          url: '/pages/index/new/new?queryNumber=' + res.data.data.id + '&text=' + res.data.data.content,
         });
 
       },
@@ -95,52 +84,6 @@ Page({
         wx.hideLoading();
       }
     });
-  },
-
-  save: function () {
-    var that = this;
-    wx.showLoading({
-      title: '请稍后...',
-    })
-    wx.request({
-      url: 'https://wycode.cn/web/api/public/clipboard/save',
-      method: 'POST',
-      data:{
-        id: that.data.queryNumber,
-        content: that.data.text
-      },
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      success: function (res) {
-
-        that.setData({
-          isShowResult: false,
-          queryNumber: res.data.data.id,
-          text: res.data.data.content
-        });
-        wx.showToast({
-          title: '保存成功！',
-          icon: 'success'
-        });
-
-      },
-      fail: function (res) {
-        wx.showToast({
-          title: res.errMsg,
-          icon: 'none'
-        });
-      },
-      complete: function () {
-        wx.hideLoading();
-      }
-    });
-  },
-
-  back: function () {
-    this.setData({
-      isShowResult: false
-    })
   }
 
 })

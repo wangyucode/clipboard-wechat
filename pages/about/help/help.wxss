@@ -1,0 +1,24 @@
+/* pages/about/help/help.wxss */
+.container-help{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 32rpx;
+}
+
+image{
+  height: 120rpx;
+  width: 120rpx;
+}
+
+.text-title{
+  margin-top: 24rpx;
+  font-style: bold;
+  width: 100%;
+}
+
+.text-content{
+  font-size: small;
+  width: 100%;
+}

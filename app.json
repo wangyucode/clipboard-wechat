@@ -1,7 +1,10 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/about/about"
+    "pages/about/about",
+    "pages/about/help/help",
+    "pages/about/feedback/feedback",
+    "pages/index/new/new"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -10,7 +13,7 @@
     "navigationBarTextStyle": "white"
   },
   "tabBar": {
-    "selectedColor":"#379392",
+    "selectedColor": "#379392",
     "list": [
       {
         "iconPath": "assets/icon/activity.png",

@@ -1,8 +1,8 @@
 <!--pages/about/about.wxml-->
-<view>
+<view class='container'>
   <scroll-view >
     <rich-text nodes='{{releaseNote}}'/>
   </scroll-view>
-  <view class='jj'></view>
-  <button>帮助</button>
+  <navigator url='/pages/about/help/help' open-type='navigate'><button>使用帮助</button></navigator>
+  <navigator url='/pages/about/feedback/feedback' open-type='navigate'><button type='primary'>意见反馈</button></navigator>
 </view>

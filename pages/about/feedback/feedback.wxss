@@ -1,0 +1,26 @@
+/* pages/about/feedback/feedback.wxss */
+.container-feed{
+  padding: 48rpx;
+}
+
+textarea{
+  border: 1px solid;
+  border-radius: 10rpx;
+  border-color: #ddd;
+  padding: 10rpx;
+  width: 96%;
+  height: 600rpx;
+}
+
+input{
+  margin-top: 24rpx;
+  border: 1px solid;
+  border-radius: 10rpx;
+  border-color: #ddd;
+  padding: 10rpx;
+  width: 96%;
+}
+
+button{
+  margin-top: 24rpx;
+}

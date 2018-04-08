@@ -1,0 +1,16 @@
+<!--pages/about/help/help.wxml-->
+<view class='container-help'>
+  <image src='/assets/logo.png'/>
+  <text>跨平台剪切板 v1.1</text>
+  <text class='text-title'>使用场景：</text>
+  <text class='text-content'>
+  跨平台、跨设备粘贴文字；
+  跨平台、跨设备记录文字，网址等信息；</text>
+  <text class='text-title'>使用方法：</text>
+  <text class='text-content'>
+  1.点击新建创建新剪切板。
+  2.修改文字为自己要保存的文字，记录查询码，点击保存。
+  3.使用提示中的查询码，访问 https://wycode.cn/clipboard/ 即可在其它平台浏览器上查询保存的文字。
+  </text>
+  
+</view>

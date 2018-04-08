@@ -1,4 +1,12 @@
 /* pages/about/about.wxss */
+
+
 scroll-view{
-  flex: 1;
+  flex-basis: 700rpx;
+  flex-shrink: 1;
+}
+
+
+navigator {
+  margin-top: 24rpx;
 }

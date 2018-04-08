@@ -1,0 +1,6 @@
+<!--pages/about/feedback/feedback.wxml-->
+<view class='container-feed'>
+  <textarea placeholder='期待您的建议！'></textarea>
+  <input placeholder='联系方式' maxlength='32'></input>
+  <button type='primary'>提交</button>
+</view>

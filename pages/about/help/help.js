@@ -1,15 +1,11 @@
-// pages/about/about.js
-
-import releaseNote from "../../info/releaseNote.js"
-
-
+// pages/about/help/help.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    "releaseNote":releaseNote.nodes
+  
   },
 
   /**
