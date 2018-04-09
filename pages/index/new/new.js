@@ -93,7 +93,7 @@ Page({
           title: '保存成功！',
           icon: 'success'
         });
-        wx.navigateBack({});
+        setTimeout(() => { wx.navigateBack({}) }, 1000);
       },
       fail: function (res) {
         wx.showToast({

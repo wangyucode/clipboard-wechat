@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    contact:'',
+    content:''
   },
 
   /**
@@ -62,5 +63,53 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+
+  contentInput: function (e) {
+    this.setData({
+      content: e.detail.value
+    })
+  },
+
+  contactInput: function (e) {
+    this.setData({
+      contact: e.detail.value
+    })
+  },
+
+  submit:function(){
+    var that = this;
+    wx.showLoading({
+      title: '请稍后...',
+    })
+    wx.request({
+      url: 'https://wycode.cn/web/api/public/clipboard/suggest',
+      method: 'POST',
+      data: {
+        contact: that.data.contact,
+        content: that.data.content
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        wx.hideLoading();
+        wx.showToast({
+          title: '提交成功！',
+          icon: 'success'
+        });
+        that.setData({
+          contact: '',
+          content: ''})
+        setTimeout(()=>{wx.navigateBack({})},1000);
+      },
+      fail: function (res) {
+        wx.showToast({
+          title: res.errMsg,
+          icon: 'none'
+        });
+        wx.hideLoading();
+      }
+    });
   }
 })
