@@ -1,5 +1,5 @@
 /* pages/about/about.wxss */
-
+/*TODO 设置page 100% 调整整体布局*/
 
 scroll-view{
   flex-basis: 700rpx;
