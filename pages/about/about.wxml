@@ -1,5 +1,5 @@
 <!--pages/about/about.wxml-->
-<view class='container'>
+<view class='aboutContainer'>
   <scroll-view >
     <rich-text nodes='{{releaseNote}}'/>
   </scroll-view>

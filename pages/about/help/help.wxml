@@ -12,5 +12,12 @@
   2.修改文字为自己要保存的文字，记录查询码，点击保存。
   3.使用提示中的查询码，访问 https://wycode.cn/clipboard/ 即可在其它平台浏览器上查询保存的文字。
   </text>
+  <text class='text-title'>支持我：</text>
+  <text class='text-content'>
+  1. 分享小程序给好友。
+  2. 通过意见反馈功能提供宝贵建议。
+  3. 访问 wycode.cn 点击关于，打赏作者，支持运营。 
+  4. 欢迎使用作者的另外一个小程序：养鱼小助手。
+  </text>
   
 </view>

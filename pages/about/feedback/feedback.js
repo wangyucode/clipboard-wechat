@@ -78,6 +78,16 @@ Page({
   },
 
   submit:function(){
+
+    //内容不能为空
+    if (this.data.content.length == 0) {
+      wx.showToast({
+        title: '建议内容不能为空！',
+        icon: 'none'
+      });
+      return;
+    }
+
     var that = this;
     wx.showLoading({
       title: '请稍后...',

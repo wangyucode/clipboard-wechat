@@ -1,11 +1,18 @@
 /* pages/about/about.wxss */
-/*TODO 设置page 100% 调整整体布局*/
-
-scroll-view{
-  flex-basis: 700rpx;
-  flex-shrink: 1;
+page{
+  height: 100%;
 }
 
+.aboutContainer{
+  padding: 24rpx;
+  display: flex;
+  flex-direction: column;
+  height: 95%;
+}
+
+scroll-view{
+  flex-basis: 100%;
+}
 
 navigator {
   margin-top: 24rpx;
