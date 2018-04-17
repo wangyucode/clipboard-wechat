@@ -1,7 +1,7 @@
 <!--pages/about/help/help.wxml-->
 <view class='container-help'>
-  <image src='/assets/logo.png'/>
-  <text>跨平台剪切板 v1.1</text>
+  <image src='/assets/logo.png' class='logoImage'/>
+  <text>跨平台剪切板 v1.2</text>
   <text class='text-title'>使用场景：</text>
   <text class='text-content'>
   跨平台、跨设备粘贴文字；
@@ -19,5 +19,5 @@
   3. 访问 wycode.cn 点击关于，打赏作者，支持运营。 
   4. 欢迎使用作者的另外一个小程序：养鱼小助手。
   </text>
-  
+  <image src='/assets/fish_logo.jpg' class='fishImage'></image>
 </view>

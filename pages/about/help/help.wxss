@@ -7,9 +7,15 @@
   padding: 32rpx;
 }
 
-image{
+.logoImage{
   height: 120rpx;
   width: 120rpx;
+}
+
+.fishImage{
+  height: 320rpx;
+  width: 320rpx;
+  margin-top: 24rpx;
 }
 
 .text-title{
