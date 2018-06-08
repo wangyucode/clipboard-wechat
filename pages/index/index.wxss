@@ -1,11 +1,23 @@
 /**index.wxss**/
 
+page{
+  height: 100%;
+}
+
 input {
   border: 1px solid;
   border-radius: 10rpx;
   border-color: #ddd;
   padding: 10rpx;
+  font-size: 32rpx;
+  margin-top: 24rpx;
   width: 96%;
+}
+
+.text-query-id{
+  color: #379392;
+  font-size: 96rpx;
+  font-weight:bold;
 }
 
 button {
@@ -19,5 +31,7 @@ textarea{
   border-color: #ddd;
   padding: 10rpx;
   width: 96%;
+  flex-grow: 1;
+  font-size: 32rpx;
   margin-top: 24rpx;
 }

@@ -7,11 +7,10 @@ page{
   padding: 24rpx;
   display: flex;
   flex-direction: column;
-  height: 95%;
 }
 
 scroll-view{
-  flex-basis: 100%;
+  height: 70vh;
 }
 
 navigator {

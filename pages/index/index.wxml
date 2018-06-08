@@ -1,6 +1,10 @@
 <!--index.wxml-->
 <view class="container">
-  <input type='number' placeholder="查询码" value='{{queryNumber>0?queryNumber:""}}' bindinput='bindInput'></input>
-  <button type='primary' bindtap='query'>查询</button>
-  <button bindtap='create'>新建</button>
+  <view>
+    <text>查询码：</text>
+    <text class='text-query-id'>{{queryId}}</text>
+  </view>
+
+  <textarea value='{{text}}' bindinput='bindInputText' maxlength='2000'></textarea>
+  <input placeholder="备注" value='{{tips}}' bindinput='bindInputTips' maxlength='10'></input>
 </view>

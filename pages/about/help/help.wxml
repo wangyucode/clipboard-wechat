@@ -1,16 +1,16 @@
 <!--pages/about/help/help.wxml-->
 <view class='container-help'>
-  <image src='/assets/logo.png' class='logoImage'/>
-  <text>跨平台剪切板 v1.2</text>
+  <image src='/assets/logo.png' class='logoImage' />
+  <text>跨平台剪切板 v2.0</text>
   <text class='text-title'>使用场景：</text>
   <text class='text-content'>
-  跨平台、跨设备粘贴文字；
-  跨平台、跨设备记录文字，网址等信息；</text>
+  跨平台、跨设备粘贴，记录文字，网址等信息；</text>
   <text class='text-title'>使用方法：</text>
   <text class='text-content'>
-  1.点击新建创建新剪切板。
-  2.修改文字为自己要保存的文字，记录查询码，点击保存。
-  3.使用提示中的查询码，访问 https://wycode.cn/clipboard/ 即可在其它平台浏览器上查询保存的文字。
+  1.修改文字为自己要保存的文字。
+  2.使用提示中的查询码，访问 https://wycode.cn/clipboard/ 即可在其它平台浏览器上查询保存的文字。
+  3.退出小程序后，下次进入小程序，您的文字不会丢失。
+  4.请勿存储个人敏感信息。
   </text>
   <text class='text-title'>支持我：</text>
   <text class='text-content'>
@@ -19,5 +19,5 @@
   3. 访问 wycode.cn 点击关于，打赏作者，支持运营。 
   4. 欢迎使用作者的另外一个小程序：养鱼小助手。
   </text>
-  <image src='/assets/fish_logo.jpg' class='fishImage'></image>
+  <image src='/assets/fish_logo.jpg' class='fishImage' bindtap='toFishHelper'></image>
 </view>

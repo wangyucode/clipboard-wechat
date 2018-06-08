@@ -11,6 +11,66 @@ const releaseNote = {
         text: '更新日志'
       }]
     },
+      {
+        name: 'div',
+        children: [{
+          type: 'text',
+          text: 'v2.0'
+        },
+        {
+          name: 'ul',
+          children: [
+            {
+              name: 'li',
+              attrs: {
+                style: 'font-size: 12px;'
+              },
+              children: [
+                {
+                  type: 'text',
+                  text: '根据反馈意见，从2.0开始，进入小程序，即可查看属于自己的剪切板，小程序端只提供保存功能，更加简洁易用。'
+                }
+              ]
+            },
+            {
+              name: 'li',
+              attrs: {
+                style: 'font-size: 12px;'
+              },
+              children: [
+                {
+                  type: 'text',
+                  text: '老版数据将在2018年9月1日删除，请在Web端查询并备份。'
+                }
+              ]
+            },
+            {
+              name: 'li',
+              attrs: {
+                style: 'font-size: 12px;'
+              },
+              children: [
+                {
+                  type: 'text',
+                  text: '新增系统剪切板检测功能，可以快速粘贴系统剪切板内容。'
+                }
+              ]
+            },
+            {
+              name: 'li',
+              attrs: {
+                style: 'font-size: 12px;'
+              },
+              children: [
+                {
+                  type: 'text',
+                  text: '新增自动保存功能，5秒内没有输入将自动保存。'
+                }
+              ]
+            }
+          ]
+        }]
+      },
     {
       name: 'div',
       children: [{

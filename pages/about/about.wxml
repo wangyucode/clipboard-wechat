@@ -1,8 +1,12 @@
 <!--pages/about/about.wxml-->
 <view class='aboutContainer'>
-  <scroll-view >
-    <rich-text nodes='{{releaseNote}}'/>
+  <scroll-view scroll-y='true'>
+    <rich-text nodes='{{releaseNote}}' />
   </scroll-view>
-  <navigator url='/pages/about/help/help' open-type='navigate'><button>使用帮助</button></navigator>
-  <navigator url='/pages/about/feedback/feedback' open-type='navigate'><button type='primary'>意见反馈</button></navigator>
+  <navigator url='/pages/about/help/help' open-type='navigate'>
+    <button>使用帮助</button>
+  </navigator>
+  <navigator url='/pages/about/feedback/feedback' open-type='navigate'>
+    <button type='primary'>意见反馈</button>
+  </navigator>
 </view>

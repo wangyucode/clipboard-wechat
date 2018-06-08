@@ -19,7 +19,7 @@
         "iconPath": "assets/icon/activity.png",
         "selectedIconPath": "assets/icon/activity_fill.png",
         "pagePath": "pages/index/index",
-        "text": "首页"
+        "text": "剪切板"
       },
       {
         "iconPath": "assets/icon/people.png",

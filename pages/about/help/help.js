@@ -62,5 +62,9 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+
+  toFishHelper:function(){
+    wx.navigateToMiniProgram({ appId: 'wx1d777be6c442da17' })
   }
 })
