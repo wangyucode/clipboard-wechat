@@ -1,7 +1,15 @@
 /**index.wxss**/
 
-page{
+page {
   height: 100%;
+}
+
+.container {
+  height: 100%;
+  align-items: stretch;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 16px;
 }
 
 input {
@@ -14,10 +22,10 @@ input {
   width: 96%;
 }
 
-.text-query-id{
+.text-query-id {
   color: #379392;
   font-size: 96rpx;
-  font-weight:bold;
+  font-weight: bold;
 }
 
 button {
@@ -25,7 +33,7 @@ button {
   width: 100%;
 }
 
-textarea{
+textarea {
   border: 1px solid;
   border-radius: 10rpx;
   border-color: #ddd;

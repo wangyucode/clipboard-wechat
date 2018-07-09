@@ -1,0 +1,4 @@
+<!--pages/my/releaseNote/release_note.wxml-->
+<view style='padding:24rpx;'>
+  <rich-text nodes='{{releaseNote}}'/>
+</view>

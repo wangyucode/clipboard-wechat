@@ -15,6 +15,54 @@ const releaseNote = {
         name: 'div',
         children: [{
           type: 'text',
+          text: 'v2.1'
+        },
+        {
+          name: 'ul',
+          children: [
+            {
+              name: 'li',
+              attrs: {
+                style: 'font-size: 12px;'
+              },
+              children: [
+                {
+                  type: 'text',
+                  text: '关于页面结构优化。'
+                }
+              ]
+            },
+            {
+              name: 'li',
+              attrs: {
+                style: 'font-size: 12px;'
+              },
+              children: [
+                {
+                  type: 'text',
+                  text: 'web端已迁移到clipboard.wycode.cn。'
+                }
+              ]
+            },
+            {
+              name: 'li',
+              attrs: {
+                style: 'font-size: 12px;'
+              },
+              children: [
+                {
+                  type: 'text',
+                  text: '新增“支持运营”，欢迎以各种方式支持运营，谢谢！'
+                }
+              ]
+            }
+          ]
+        }]
+      },
+      {
+        name: 'div',
+        children: [{
+          type: 'text',
           text: 'v2.0'
         },
         {

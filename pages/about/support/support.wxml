@@ -1,0 +1,49 @@
+<!-- pages/my/support/support.wxml -->
+<view class='container-support'>
+  <view class="vbox-top">
+    <image class="image-thanks" src="/assets/icon/xiexie.jpg" />
+    <text class='text-content'>跨平台剪切板的维护更新离不开您的支持！您可以通过以下方式支持我们。</text>
+  </view>
+  <view class='gray-gap' />
+  <button class="btn-share" hover-class="btn-share-hover" open-type="share">
+    
+    <view class='share-item'>
+    <image class='share-left-image' src='/assets/icon/share.png'></image>
+    <text decode='ture'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分享小程序给好友</text>
+    <image class='share-right-arrow' src='/assets/icon/arrow_down.png'></image>
+    </view>
+    
+  </button>
+  <view class='dividing-line' />
+  <view class='my-item' hover-class='my-item-hover' bindtap="toRoll">
+    <image class="image-logo" src='/assets/roll.jpg' />
+    <view class="vbox">
+      <text class="text-logo">3D滚蛋吧</text>
+      <text class='my-item-desc'>一起来玩滚蛋吧，看谁滚的远。</text>
+    </view>
+    <view class='flex-open'></view>
+    <image class='my-item-right-arrow' src='/assets/icon/arrow_down.png'></image>
+  </view>
+  <view class='dividing-line' />
+  <view class='my-item' hover-class='my-item-hover' bindtap="toFish">
+    <image class="image-logo" src='/assets/fish.jpg' />
+    <view class="vbox">
+      <text class="text-logo">养鱼小助手</text>
+      <text class='my-item-desc'>养鱼？用养鱼小助手就够了！</text>
+    </view>
+    <view class='flex-open'></view>
+    <image class='my-item-right-arrow' src='/assets/icon/arrow_down.png'></image>
+  </view>
+  <!-- <view class='dividing-line' />
+  <view class='my-item' hover-class='my-item-hover' bindtap="toReward">
+    <text class='my-item-text'>打赏我</text>
+    <view class='flex-open'></view>
+    <image class='my-item-right-arrow' src='/assets/icons/arrow_down.png'></image>
+  </view> -->
+  <view class='dividing-line' />
+  <view class='my-item'>
+    <text class='my-item-text'>调戏我？打赏我？请访问网址 wycode.cn/about.html</text>
+    <view class='flex-open'></view>
+  </view>
+  <view class='dividing-line' />
+</view>

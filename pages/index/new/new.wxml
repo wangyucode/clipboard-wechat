@@ -1,7 +1,0 @@
-<!--pages/index/new/new.wxml-->
-<view>
-  <text>查询码：{{queryNumber}}</text>
-  <textarea value='{{text}}' bindinput='bindInputText'></textarea>
-  <button bindtap='copy'>复制到剪切板</button>
-  <button type= 'primary' bindtap='saveAndBack'>保存并返回</button>
-</view>

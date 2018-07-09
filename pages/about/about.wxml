@@ -1,12 +1,40 @@
 <!--pages/about/about.wxml-->
-<view class='aboutContainer'>
-  <scroll-view scroll-y='true'>
-    <rich-text nodes='{{releaseNote}}' />
-  </scroll-view>
-  <navigator url='/pages/about/help/help' open-type='navigate'>
-    <button>使用帮助</button>
+
+<view class='my-container'>
+  <view class="vbox-top">
+    <image src='/assets/logo.png' class='fish-logo' />
+    <text class="text-app">跨平台剪切板 v2.1</text>
+    <text class='text-title'>使用场景：</text>
+  <text class='text-content'>跨平台、跨设备粘贴，记录文字，网址等信息。</text>
+  <text class='text-title'>使用方法：</text>
+  <text class='text-content' style='margin-bottom:24rpx;'>1.修改文字为自己要保存的文字。
+  2.使用提示中的查询码，访问 https://clipboard.wycode.cn 即可在其它平台浏览器上查询保存的文字。
+  3.退出小程序后，下次进入小程序，您的文字不会丢失。
+  4.请勿存储个人敏感信息。
+  </text>
+  </view>
+  <view class='gray-gap' />
+  <navigator url='/pages/about/releaseNote/release_note' open-type='navigate'>
+    <view class='my-item' hover-class='my-item-hover'>
+      <text class='my-item-text'>更新日志</text>
+      <view class='flex-open'></view>
+      <image class='my-item-right-arrow' src='/assets/icon/arrow_down.png'></image>
+    </view>
   </navigator>
+  <view class='dividing-line' />
   <navigator url='/pages/about/feedback/feedback' open-type='navigate'>
-    <button type='primary'>意见反馈</button>
+    <view class='my-item' hover-class='my-item-hover'>
+      <text class='my-item-text'>意见反馈</text>
+      <view class='flex-open'></view>
+      <image class='my-item-right-arrow' src='/assets/icon/arrow_down.png'></image>
+    </view>
+  </navigator>
+  <view class='dividing-line' />
+  <navigator url='/pages/about/support/support' open-type='navigate'>
+    <view class='my-item' hover-class='my-item-hover'>
+      <text class='my-item-text'>支持运营</text>
+      <view class='flex-open'></view>
+      <image class='my-item-right-arrow' src='/assets/icon/arrow_down.png'></image>
+    </view>
   </navigator>
 </view>

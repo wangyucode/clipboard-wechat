@@ -17,35 +17,35 @@ Page({
       title: '加载中...',
       mask: true
     });
-    this.checkLogin();
+    this.doLogin();
   },
 
 
-  checkLogin: function () {
-    var that = this;
-    let accessKey = wx.getStorageSync('accessKey');
-    if (accessKey) {
-      // 检查 session_key 是否过期
-      wx.checkSession({
-        // session_key 有效(未过期)
-        success: function () {
-          // 业务逻辑处理
-          app.globalData.accessKey = accessKey;
-          console.log(accessKey);
-          that.query(accessKey);
-        },
+  // checkLogin: function () {
+  //   var that = this;
+  //   let accessKey = wx.getStorageSync('accessKey');
+  //   if (accessKey) {
+  //     // 检查 session_key 是否过期
+  //     wx.checkSession({
+  //       // session_key 有效(未过期)
+  //       success: function () {
+  //         // 业务逻辑处理
+  //         app.globalData.accessKey = accessKey;
+  //         console.log(accessKey);
+  //         that.query(accessKey);
+  //       },
 
-        // session_key 过期
-        fail: function () {
-          // session_key过期，重新登录
-          that.doLogin();
-        }
-      });
-    } else {
-      // 无accessKey，作为首次登录
-      that.doLogin();
-    }
-  },
+  //       // session_key 过期
+  //       fail: function () {
+  //         // session_key过期，重新登录
+  //         that.doLogin();
+  //       }
+  //     });
+  //   } else {
+  //     // 无accessKey，作为首次登录
+  //     that.doLogin();
+  //   }
+  // },
 
   doLogin: function () {
     var that = this;
@@ -61,12 +61,11 @@ Page({
               console.log(res)
               if (res.statusCode == 200 && res.data.success) {
                 let key = res.data.data.key;
-                wx.setStorage({
-                  key: "accessKey",
-                  data: key
-                });
+                // wx.setStorage({
+                //   key: "accessKey",
+                //   data: key
+                // });
                 app.globalData.accessKey = key;
-                console.log('save-->' + key);
                 that.setData({
                   queryId: res.data.data.id,
                   text: res.data.data.content,

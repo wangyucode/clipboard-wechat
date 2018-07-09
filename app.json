@@ -2,9 +2,9 @@
   "pages": [
     "pages/index/index",
     "pages/about/about",
-    "pages/about/help/help",
     "pages/about/feedback/feedback",
-    "pages/index/new/new"
+    "pages/about/releaseNote/release_note",
+    "pages/about/support/support"
   ],
   "window": {
     "backgroundTextStyle": "light",

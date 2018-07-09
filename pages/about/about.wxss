@@ -1,18 +1,59 @@
 /* pages/about/about.wxss */
 page{
-  height: 100%;
+  background: #ddd;
 }
 
-.aboutContainer{
-  padding: 24rpx;
+.vbox-top{
   display: flex;
   flex-direction: column;
+  background: white;
+  align-items: center;
 }
 
-scroll-view{
-  height: 70vh;
+.fish-logo{
+  margin: 24rpx;
+  height: 120rpx;
+  width: 120rpx;
+  border-radius: 60rpx;
 }
 
-navigator {
+.text-app{
+  font-size: 32rpx;
+  font-weight: bold;
+  width: 40%;
+}
+
+.text-title{
   margin-top: 24rpx;
+  font-weight: bold;
+  font-size: 28rpx;
+  width: 90%;
+}
+
+.text-content{
+  font-size: 26rpx;
+  margin-top: 24rpx;
+  width: 90%;
+}
+
+.my-item{
+  display: flex;
+  align-items: center;
+  padding: 24rpx;
+  background-color: #fff;
+}
+
+
+
+.my-item-hover{
+  background-color: #eee;
+}
+
+.my-item-text{
+  font-size: 32rpx;
+}
+
+.my-item-right-arrow{
+  width: 36rpx;
+  height: 36rpx;
 }
