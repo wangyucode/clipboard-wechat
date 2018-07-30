@@ -74,5 +74,11 @@ Page({
 
   toRoll:function(){
     wx.navigateToMiniProgram({ appId: 'wxa6e870e9d665b10b'})
+  },
+
+  toReward: function () {
+    wx.previewImage({
+      urls: ["https://wycode.cn/upload/image/fish/reward.jpg"],
+    })
   }
 })

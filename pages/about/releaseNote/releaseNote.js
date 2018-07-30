@@ -15,6 +15,42 @@ const releaseNote = {
         name: 'div',
         children: [{
           type: 'text',
+          text: 'v2.2'
+        },
+        {
+          name: 'ul',
+          children: [
+            {
+              name: 'li',
+              attrs: {
+                style: 'font-size: 12px;'
+              },
+              children: [
+                {
+                  type: 'text',
+                  text: '新增打赏功能，感谢您的支持'
+                }
+              ]
+            },
+            {
+              name: 'li',
+              attrs: {
+                style: 'font-size: 12px;'
+              },
+              children: [
+                {
+                  type: 'text',
+                  text: '欢迎一起来玩《3D滚蛋吧》小游戏，可好玩了！'
+                }
+              ]
+            }
+          ]
+        }]
+      },
+      {
+        name: 'div',
+        children: [{
+          type: 'text',
           text: 'v2.1'
         },
         {

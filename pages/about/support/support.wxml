@@ -6,13 +6,13 @@
   </view>
   <view class='gray-gap' />
   <button class="btn-share" hover-class="btn-share-hover" open-type="share">
-    
+
     <view class='share-item'>
-    <image class='share-left-image' src='/assets/icon/share.png'></image>
-    <text decode='ture'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分享小程序给好友</text>
-    <image class='share-right-arrow' src='/assets/icon/arrow_down.png'></image>
+      <image class='share-left-image' src='/assets/icon/share.png'></image>
+      <text decode='ture'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分享小程序给好友</text>
+      <image class='share-right-arrow' src='/assets/icon/arrow_down.png'></image>
     </view>
-    
+
   </button>
   <view class='dividing-line' />
   <view class='my-item' hover-class='my-item-hover' bindtap="toRoll">
@@ -34,15 +34,15 @@
     <view class='flex-open'></view>
     <image class='my-item-right-arrow' src='/assets/icon/arrow_down.png'></image>
   </view>
-  <!-- <view class='dividing-line' />
+  <view class='dividing-line' />
   <view class='my-item' hover-class='my-item-hover' bindtap="toReward">
     <text class='my-item-text'>打赏我</text>
     <view class='flex-open'></view>
-    <image class='my-item-right-arrow' src='/assets/icons/arrow_down.png'></image>
-  </view> -->
+    <image class='my-item-right-arrow' src='/assets/icon/arrow_down.png'></image>
+  </view>
   <view class='dividing-line' />
   <view class='my-item'>
-    <text class='my-item-text'>调戏我？打赏我？请访问网址 wycode.cn/about.html</text>
+    <text class='my-item-text'>联系我？请访问网址 wycode.cn</text>
     <view class='flex-open'></view>
   </view>
   <view class='dividing-line' />
