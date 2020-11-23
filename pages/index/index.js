@@ -20,33 +20,6 @@ Page({
     this.doLogin();
   },
 
-
-  // checkLogin: function () {
-  //   var that = this;
-  //   let accessKey = wx.getStorageSync('accessKey');
-  //   if (accessKey) {
-  //     // 检查 session_key 是否过期
-  //     wx.checkSession({
-  //       // session_key 有效(未过期)
-  //       success: function () {
-  //         // 业务逻辑处理
-  //         app.globalData.accessKey = accessKey;
-  //         console.log(accessKey);
-  //         that.query(accessKey);
-  //       },
-
-  //       // session_key 过期
-  //       fail: function () {
-  //         // session_key过期，重新登录
-  //         that.doLogin();
-  //       }
-  //     });
-  //   } else {
-  //     // 无accessKey，作为首次登录
-  //     that.doLogin();
-  //   }
-  // },
-
   doLogin: function () {
     var that = this;
     // 登录
@@ -95,7 +68,7 @@ Page({
     this.data.text = e.detail.value
     textTimerId = setTimeout(() => {
       this.save()
-    }, 5000)
+    }, 1000)
   },
 
 
@@ -104,7 +77,7 @@ Page({
     this.data.tips = e.detail.value
     tipsTimerId = setTimeout(() => {
       this.save()
-    }, 5000)
+    }, 1000)
   },
 
   query: function (accessKey) {

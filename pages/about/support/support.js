@@ -76,6 +76,10 @@ Page({
     wx.navigateToMiniProgram({ appId: 'wxa6e870e9d665b10b'})
   },
 
+  toDota:function(){
+    wx.navigateToMiniProgram({ appId: 'wx8a383e1143f5b2c9'})
+  },
+
   toReward: function () {
     wx.previewImage({
       urls: ["https://wycode.cn/upload/image/fish/reward.jpg"],
