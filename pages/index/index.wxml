@@ -7,4 +7,5 @@
 
   <textarea value='{{text}}' bindinput='bindInputText' maxlength='2000'></textarea>
   <input placeholder="备注" value='{{tips}}' bindinput='bindInputTips' maxlength='10'></input>
+  <button bindtap="save" type="primary" disabled="{{loading}}" loading="{{loading}}">保存</button>
 </view>

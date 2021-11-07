@@ -93,18 +93,15 @@ Page({
       title: '请稍后...',
     })
     wx.request({
-      url: app.globalData.SERVER_URL + '/web/api/public/comment/newComment',
+      url: app.globalData.SERVER_URL + '/node/comments',
       method: 'POST',
       data: {
-        accessKey: 'dPXB07TiOBdoYAyRbNnz5E5CnAu3ZBSy',
-        appName: 'clipboard',
+        type: 0,
+        key: 'dPXB07TiOBdoYAyRbNnz5E5CnAu3ZBSy',
+        app: 'clipboard',
         fromUserName: that.data.contact,
-        fromUserId: '-1',
         content: that.data.content,
-        topicId: '/feedback'
-      },
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
+        topic: '/feedback'
       },
       success: function (res) {
         wx.hideLoading();

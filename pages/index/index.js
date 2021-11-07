@@ -1,15 +1,13 @@
 //index.js
 //获取应用实例
-const app = getApp()
-var textTimerId
-var tipsTimerId
+const app = getApp();
 
 Page({
   data: {
     queryId: '',
     text: '',
     tips: '',
-
+    loading: true,
   },
 
   onLoad: function () {
@@ -17,41 +15,94 @@ Page({
       title: '加载中...',
       mask: true
     });
-    this.doLogin();
+    try {
+      const openid = wx.getStorageSync('openid')
+      if (openid) {
+        this.getByOpenid(openid);
+      } else {
+        this.doLogin();
+      }
+    } catch (e) {
+      console.error(e);
+      this.doLogin();
+    }
+
+    this.getNotification();
+  },
+
+  getByOpenid: function (openid) {
+    wx.request({
+      url: app.globalData.SERVER_URL + '/node/clipboard/openid/' + openid,
+      success: (res) => {
+        console.log('getByOpenid-->', res);
+        if (res.statusCode == 200 && res.data.success) {
+          this.setData({
+            queryId: res.data.payload._id,
+            text: res.data.payload.content,
+            tips: res.data.payload.tips
+          });
+          this.checkClipboard();
+        }
+      },
+      complete: () => {
+        wx.hideLoading();
+        this.setData({
+          loading: false
+        });
+      },
+    });
+  },
+
+  getNotification: function () {
+    wx.request({
+      url: app.globalData.SERVER_URL + '/node/clipboard/notification',
+      success: (res) => {
+        console.log('getNotification-->', res);
+        if (res.statusCode == 200 && res.data.success && res.data.payload.value) {
+          wx.showModal({
+            title: '重要通知',
+            content: res.data.payload.value,
+            showCancel: false
+          });
+        }
+      }
+    });
   },
 
   doLogin: function () {
-    var that = this;
-    // 登录
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         if (res.code) {
           wx.request({
-            url: app.globalData.SERVER_URL + '/web/api/public/clipboard/getSession',
-            data: { 'jsCode': res.code },
-            success: function (res) {
-              console.log(res)
+            url: app.globalData.SERVER_URL + '/node/clipboard/wx/session',
+            data: {
+              'code': res.code
+            },
+            success: (res) => {
+              console.log('wxsession-->', res);
               if (res.statusCode == 200 && res.data.success) {
-                let key = res.data.data.key;
-                // wx.setStorage({
-                //   key: "accessKey",
-                //   data: key
-                // });
-                app.globalData.accessKey = key;
-                that.setData({
-                  queryId: res.data.data.id,
-                  text: res.data.data.content,
-                  tips: res.data.data.tips
+                const openid = res.data.payload.openid;
+                wx.setStorage({
+                  key: "openid",
+                  data: openid
+                });
+                this.setData({
+                  queryId: res.data.payload._id,
+                  text: res.data.payload.content,
+                  tips: res.data.payload.tips
                 });
 
-                wx.hideLoading()
-                that.checkClipboard()
+                this.checkClipboard();
               }
             },
-            fail: function (res) { },
-            complete: function (res) { },
-          })
+            complete: () => {
+              wx.hideLoading();
+              this.setData({
+                loading: false
+              });
+            },
+          });
         } else {
           wx.showToast({
             title: res.errMsg,
@@ -62,104 +113,60 @@ Page({
     })
   },
 
-
   bindInputText: function (e) {
-    clearTimeout(textTimerId)
-    this.data.text = e.detail.value
-    textTimerId = setTimeout(() => {
-      this.save()
-    }, 1000)
+    this.data.text = e.detail.value;
   },
-
 
   bindInputTips: function (e) {
-    clearTimeout(tipsTimerId)
-    this.data.tips = e.detail.value
-    tipsTimerId = setTimeout(() => {
-      this.save()
-    }, 1000)
-  },
-
-  query: function (accessKey) {
-    if (this.data.queryNumber <= 0) {
-      wx.showToast({
-        title: '查询码不正确！',
-        icon: 'none'
-      });
-      return
-    }
-
-    var that = this;
-    wx.request({
-      url: app.globalData.SERVER_URL + '/web/api/public/clipboard/queryByKey',
-      data: { key: accessKey },
-      success: function (res) {
-        if (!res.data.success || res.data.data == null) {
-          that.doLogin();
-        } else {
-          that.setData({
-            queryId: res.data.data.id,
-            text: res.data.data.content,
-            tips: res.data.data.tips
-          });
-          wx.hideLoading();
-          that.checkClipboard()
-        }
-      },
-      fail: function (res) {
-        wx.showToast({
-          title: res,
-          icon: 'none'
-        });
-      }
-    });
-
+    this.data.tips = e.detail.value;
   },
 
   save: function () {
-
-    var that = this;
+    this.setData({
+      loading: true
+    });
     wx.request({
-      url: app.globalData.SERVER_URL + '/web/api/public/clipboard/saveById',
+      url: app.globalData.SERVER_URL + '/node/clipboard',
       data: {
-        id: this.data.queryId,
+        _id: this.data.queryId,
         content: this.data.text,
         tips: this.data.tips
       },
       method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      success: function (res) {
-        console.log(res)
+      success: (res) => {
+        console.log('save->', res);
         if (res.data.success) {
           wx.showToast({
             title: '已保存！',
           })
         }
+      },
+      complete: () => {
+        this.setData({
+          loading: false
+        });
       }
     });
-
   },
 
-  checkClipboard:function(){
-    var that = this;
+  checkClipboard: function () {
     wx.getClipboardData({
-      success: function (res) {
-        console.log(res.data)
+      success: (res) => {
+        console.log("getClipboardData->", res.data)
         wx.showModal({
           title: '是否粘贴剪切板内容？',
           content: res.data,
-          success: function (resModal) {
+          success: (resModal) => {
             if (resModal.confirm) {
               console.log('用户点击确定')
-              that.setData({ text: that.data.text + res.data})
-              that.save()
+              this.setData({
+                text: this.data.text + res.data
+              });
+              this.save()
             }
           }
-        })
+        });
       }
     })
   }
-
 })

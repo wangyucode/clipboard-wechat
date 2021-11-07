@@ -15,6 +15,28 @@ const releaseNote = {
         name: 'div',
         children: [{
             type: 'text',
+            text: 'v2.4'
+          },
+          {
+            name: 'ul',
+            children: [{
+                name: 'li',
+                attrs: {
+                  style: 'font-size: 12px;'
+                },
+                children: [{
+                  type: 'text',
+                  text: '细节优化，取消自动保存，恢复按钮保存'
+                }]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        name: 'div',
+        children: [{
+            type: 'text',
             text: 'v2.3'
           },
           {

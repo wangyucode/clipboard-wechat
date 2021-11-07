@@ -25,3 +25,17 @@
   height: 36rpx;
   background: #ddd;
 }
+
+button[type=primary]{
+  background-color: #379392;
+}
+
+.button-hover[type=primary] {
+  color: rgba(255,255,255,.6);
+  background-color: #286968;
+}
+
+button[loading][type=primary] {
+  color: rgba(255,255,255,.6);
+  background-color: #b8beb8;
+}
