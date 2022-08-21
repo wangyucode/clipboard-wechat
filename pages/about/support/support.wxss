@@ -1,105 +1,110 @@
 /* pages/my/support/support.wxss */
-page{
-  background: #ddd;
+page {
+    background: #ddd;
 }
 
-.container-support{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.container-support {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.image-logo{
-  width: 128rpx;
-  height: 128rpx;
-  margin-right: 24rpx;
+.image-logo {
+    width: 128rpx;
+    height: 128rpx;
 }
 
-.text-logo{
-  font-size: 26rpx;
+.text-logo {
+    font-size: 26rpx;
 }
 
-.image-thanks{
-  width: 320rpx;
-  height: 320rpx;
-  margin-top: 24rpx;
+.image-thanks {
+    width: 320rpx;
+    height: 320rpx;
+    margin-top: 24rpx;
 }
 
-.text-content{
-  font-size: 28rpx;
-  font-weight: bold;
-  padding: 24rpx;
+.text-content {
+    font-size: 28rpx;
+    font-weight: bold;
+    padding: 24rpx;
 }
 
-.my-item{
-  display: flex;
-  align-items: center;
-  padding: 24rpx;
-  background-color: white;
-  width: 94%;
+.my-item {
+    display: flex;
+    align-items: center;
+    padding: 24rpx;
+    background-color: white;
+    width: 100%;
+    box-sizing: border-box;
+    gap: 12rpx;
 }
 
-.my-item-hover{
-  background-color: #eee;
+.my-item-hover {
+    background-color: #eee;
 }
 
-.my-item-text{
-  font-size: 26rpx;
+.my-item-text {
+    font-size: 26rpx;
 }
 
-.my-item-desc{
-  font-size: 24rpx;
-  color: #555;
-  margin-top: 12rpx;
+.my-item-desc {
+    font-size: 24rpx;
+    color: #555;
+    margin-top: 12rpx;
 }
 
-.my-item-right-arrow{
-  width: 36rpx;
-  height: 36rpx;
+.my-item-right-arrow {
+    width: 36rpx;
+    height: 36rpx;
 }
 
-.btn-share{
-  width: 100%;
-  background-color: white;
-  border: none;
-  border-radius: 0;
-  text-align: left;
-  font-size: 26rpx;
-  padding: 24rpx;
-  line-height: 1.5;
+.btn-share {
+    width: 100%;
+    background-color: white;
+    border: none;
+    border-radius: 0;
+    text-align: left;
+    font-size: 26rpx;
+    padding: 24rpx;
+    line-height: 1.5;
 }
 
-.btn-share-hover{
-  background-color: #eee;
+.btn-share-hover {
+    background-color: #eee;
 }
 
-.share-item{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+.share-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
-.share-right-arrow{
-  width: 36rpx;
-  height: 36rpx;
-  position: absolute;
-  right: 24rpx;
+.share-right-arrow {
+    width: 36rpx;
+    height: 36rpx;
+    position: absolute;
+    right: 24rpx;
 }
 
-.share-left-image{
-  width: 64rpx;
-  height: 64rpx;
-  padding-left: 35rpx;
+.share-left-image {
+    width: 64rpx;
+    height: 64rpx;
+    padding-left: 35rpx;
 }
 
-.btn-share::after{
-  border: none;
+.btn-share::after {
+    border: none;
 }
 
+.vbox-top {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    align-items: center;
+}
 
-.vbox-top{
-  display: flex;
-  flex-direction: column;
-  background: white;
-  align-items: center;
+.vbox {
+    flex-grow: 1;
+    width: min-content;
 }

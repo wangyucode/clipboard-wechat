@@ -6,7 +6,6 @@ Page({
   data: {
     queryId: '',
     text: '',
-    tips: '',
     loading: true,
   },
 
@@ -26,7 +25,6 @@ Page({
       console.error(e);
       this.doLogin();
     }
-
     this.getNotification();
   },
 
@@ -38,10 +36,8 @@ Page({
         if (res.statusCode == 200 && res.data.success) {
           this.setData({
             queryId: res.data.payload._id,
-            text: res.data.payload.content,
-            tips: res.data.payload.tips
+            text: res.data.payload.content
           });
-          this.checkClipboard();
         }
       },
       complete: () => {
@@ -89,11 +85,8 @@ Page({
                 });
                 this.setData({
                   queryId: res.data.payload._id,
-                  text: res.data.payload.content,
-                  tips: res.data.payload.tips
+                  text: res.data.payload.content
                 });
-
-                this.checkClipboard();
               }
             },
             complete: () => {
@@ -117,10 +110,6 @@ Page({
     this.data.text = e.detail.value;
   },
 
-  bindInputTips: function (e) {
-    this.data.tips = e.detail.value;
-  },
-
   save: function () {
     this.setData({
       loading: true
@@ -129,8 +118,7 @@ Page({
       url: app.globalData.SERVER_URL + '/node/clipboard',
       data: {
         _id: this.data.queryId,
-        content: this.data.text,
-        tips: this.data.tips
+        content: this.data.text
       },
       method: 'POST',
       success: (res) => {
@@ -160,7 +148,7 @@ Page({
             if (resModal.confirm) {
               console.log('用户点击确定')
               this.setData({
-                text: this.data.text + res.data
+                text: this.data.text + '\n' + res.data
               });
               this.save()
             }

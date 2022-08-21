@@ -1,11 +1,13 @@
 <!--index.wxml-->
 <view class="container">
-  <view>
-    <text>查询码：</text>
-    <text class='text-query-id'>{{queryId}}</text>
-  </view>
+    <view>
+        <text>查询码：</text>
+        <text class='text-query-id'>{{queryId}}</text>
+    </view>
 
-  <textarea value='{{text}}' bindinput='bindInputText' maxlength='2000'></textarea>
-  <input placeholder="备注" value='{{tips}}' bindinput='bindInputTips' maxlength='10'></input>
-  <button bindtap="save" type="primary" disabled="{{loading}}" loading="{{loading}}">保存</button>
+    <textarea value='{{text}}' bindinput='bindInputText' maxlength='2000'></textarea>
+    <view id="btn-container">
+        <button id="btn-paste" bindtap="paste" type="secondary" bindtap="checkClipboard">粘贴</button>
+        <button id="btn-save" bindtap="save" type="primary" disabled="{{loading}}" loading="{{loading}}">保存</button>
+    </view>
 </view>

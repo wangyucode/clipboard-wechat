@@ -15,6 +15,38 @@ const releaseNote = {
         name: 'div',
         children: [{
             type: 'text',
+            text: 'v2.5'
+          },
+          {
+            name: 'ul',
+            children: [{
+                name: 'li',
+                attrs: {
+                  style: 'font-size: 12px;'
+                },
+                children: [{
+                  type: 'text',
+                  text: '增加粘贴按钮，需要点击粘贴才会读取系统剪切板'
+                }]
+              },
+              {
+                name: 'li',
+                attrs: {
+                  style: 'font-size: 12px;'
+                },
+                children: [{
+                  type: 'text',
+                  text: '取消备注功能，所有已存在的备注将会被加入到内容中'
+                }]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        name: 'div',
+        children: [{
+            type: 'text',
             text: 'v2.4'
           },
           {

@@ -3,7 +3,7 @@
 <view class='my-container'>
   <view class="vbox-top">
     <image src='/assets/logo.png' class='fish-logo' />
-    <text class="text-app">跨平台剪切板 v2.4</text>
+    <text class="text-app">跨平台剪切板 v2.5</text>
     <text class='text-title'>使用场景：</text>
   <text class='text-content'>跨平台、跨设备粘贴，记录文字，网址等信息。</text>
   <text class='text-title'>使用方法：</text>

@@ -6,7 +6,7 @@ App({
   },
 
   globalData: {
-    SERVER_URL :"http://localhost:8082"
-    // SERVER_URL: "https://wycode.cn"
+    // SERVER_URL :"http://localhost:8082"
+    SERVER_URL: "https://wycode.cn"
   },
 })
