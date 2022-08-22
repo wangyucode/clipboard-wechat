@@ -1,6 +1,6 @@
 <!--pages/about/feedback/feedback.wxml-->
 <view class='container-feed'>
   <textarea placeholder='期待您的建议！' value='{{content}}' bindinput='contentInput'></textarea>
-  <input placeholder='联系方式' maxlength='32' value='{{contact}}' bindinput='contactInput'></input>
+  <!-- <input placeholder='联系方式（可不填）' maxlength='32' value='{{contact}}' bindinput='contactInput'></input> -->
   <button type='primary' bindtap='submit'>提交</button>
 </view>
