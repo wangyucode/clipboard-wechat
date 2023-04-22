@@ -30,7 +30,7 @@ Page({
 
   getByOpenid: function (openid) {
     wx.request({
-      url: app.globalData.SERVER_URL + '/node/clipboard/openid/' + openid,
+      url: app.globalData.SERVER_URL + '/clipboard/openid/' + openid,
       success: (res) => {
         console.log('getByOpenid-->', res);
         if (res.statusCode == 200 && res.data.success) {
@@ -51,7 +51,7 @@ Page({
 
   getNotification: function () {
     wx.request({
-      url: app.globalData.SERVER_URL + '/node/clipboard/notification',
+      url: app.globalData.SERVER_URL + '/clipboard/notification',
       success: (res) => {
         console.log('getNotification-->', res);
         if (res.statusCode == 200 && res.data.success && res.data.payload.value) {
@@ -115,7 +115,7 @@ Page({
       loading: true
     });
     wx.request({
-      url: app.globalData.SERVER_URL + '/node/clipboard',
+      url: app.globalData.SERVER_URL + '/clipboard',
       data: {
         _id: this.data.queryId,
         content: this.data.text

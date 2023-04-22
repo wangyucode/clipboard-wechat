@@ -6,7 +6,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    contact: '',
     content: ''
   },
 
@@ -37,7 +36,7 @@ Page({
       title: '请稍后...',
     })
     wx.request({
-      url: app.globalData.SERVER_URL + '/node/comments',
+      url: app.globalData.SERVER_URL + '/comment',
       method: 'POST',
       data: {
         type: 0,

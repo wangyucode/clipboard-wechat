@@ -30,6 +30,10 @@ page {
     padding: 24rpx;
 }
 
+navigator{
+    width: 100%;
+}
+
 .my-item {
     display: flex;
     align-items: center;

@@ -6,6 +6,7 @@
     </view>
 
     <textarea value='{{text}}' bindinput='bindInputText' maxlength='2000'></textarea>
+    <ad-custom unit-id="adunit-443c8f80b0948b01"></ad-custom>
     <view id="btn-container">
         <button id="btn-paste" bindtap="paste" type="secondary" bindtap="checkClipboard">粘贴</button>
         <button id="btn-save" bindtap="save" type="primary" disabled="{{loading}}" loading="{{loading}}">保存</button>

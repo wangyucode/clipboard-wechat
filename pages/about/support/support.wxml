@@ -15,33 +15,17 @@
 
   </button>
   <view class='dividing-line' />
-  <view class='my-item' hover-class='my-item-hover' bindtap="toRoll">
-    <image class="image-logo" src='/assets/roll.jpg' />
+  <navigator wx:for="{{apps}}" target="miniProgram" open-type="navigate" app-id="{{item.appid}}" version="release">
+  <view class='my-item' hover-class='my-item-hover'>
+    <image class="image-logo" src='{{item.img}}' />
     <view class="vbox">
-      <text class="text-logo">3D滚蛋吧</text>
-      <text class='my-item-desc'>一起来玩滚蛋吧，看谁滚的远。</text>
+      <text class="text-logo">{{item.name}}</text>
+      <text class='my-item-desc'>{{item.note}}</text>
     </view>
     <image class='my-item-right-arrow' src='/assets/icon/arrow_down.png'></image>
   </view>
   <view class='dividing-line' />
-  <view class='my-item' hover-class='my-item-hover' bindtap="toDota">
-    <image class="image-logo" src='/assets/dota.jpg' />
-    <view class="vbox">
-      <text class="text-logo">DOTA2英雄技能物品天梯助手</text>
-      <text class='my-item-desc'>玩DOTA2，查询英雄属性、技能、物品、天梯排行。</text>
-    </view>
-    <image class='my-item-right-arrow' src='/assets/icon/arrow_down.png'></image>
-  </view>
-  <view class='dividing-line' />
-  <view class='my-item' hover-class='my-item-hover' bindtap="toDiablo">
-    <image class="image-logo" src='/assets/diablo.jpg' />
-    <view class="vbox">
-      <text class="text-logo">暗黑破坏神不朽小助手</text>
-      <text class='my-item-desc'>玩暗黑，查询职业、技能、物品、怪物、宝石、套装、传奇装备。</text>
-    </view>
-    <image class='my-item-right-arrow' src='/assets/icon/arrow_down.png'></image>
-  </view>
-  <view class='dividing-line' />
+  </navigator>
   <view class='my-item' hover-class='my-item-hover' bindtap="toReward">
     <text class='my-item-text'>打赏我</text>
     <view class='flex-open'></view>

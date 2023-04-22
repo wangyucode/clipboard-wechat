@@ -1,27 +1,30 @@
 /* pages/about/feedback/feedback.wxss */
-.container-feed{
-  padding: 48rpx;
+page{
+  position: relative;
+  height: 100%;
+}
+.container-feed {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+  margin: 48rpx;
+  display: flex;
+  flex-direction: column;
 }
 
-textarea{
+textarea {
+  flex: 1;
   border: 1px solid;
   border-radius: 10rpx;
   border-color: #ddd;
   padding: 10rpx;
   width: 96%;
-  height: 600rpx;
 }
 
-input{
+button {
   margin-top: 24rpx;
-  border: 1px solid;
-  border-radius: 10rpx;
-  border-color: #ddd;
-  padding: 10rpx;
-  width: 96%;
-}
-
-button{
-  margin-top: 24rpx;
+  width: 100%;
   background-color: #379392 !important;
 }

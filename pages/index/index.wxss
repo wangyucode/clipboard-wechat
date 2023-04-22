@@ -2,14 +2,16 @@
 
 page {
   height: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
 }
 
 .container {
-  height: 100%;
-  align-items: stretch;
+  position: absolute;
+  inset: 0;
   justify-content: space-between;
-  box-sizing: border-box;
-  padding: 16px;
+  margin: 24rpx;
 }
 
 .text-query-id {
@@ -28,9 +30,16 @@ textarea {
   border-radius: 10rpx;
   border-color: #ddd;
   padding: 10rpx;
-  width: 96%;
+  width: auto;
   flex-grow: 1;
-  font-size: 32rpx;
+  font-size: 28rpx;
+  margin-top: 24rpx;
+}
+
+ad-custom {
+  border: 1px solid;
+  border-radius: 10rpx;
+  border-color: #ddd;
   margin-top: 24rpx;
 }
 
