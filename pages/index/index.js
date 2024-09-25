@@ -38,6 +38,8 @@ Page({
             queryId: res.data.payload._id,
             text: res.data.payload.content
           });
+        } else {
+          this.doLogin();
         }
       },
       complete: () => {
@@ -71,10 +73,7 @@ Page({
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         if (res.code) {
           wx.request({
-            url: app.globalData.SERVER_URL + '/node/clipboard/wx/session',
-            data: {
-              'code': res.code
-            },
+            url: `${app.globalData.SERVER_URL}/clipboard/wx/${res.code}` ,
             success: (res) => {
               console.log('wxsession-->', res);
               if (res.statusCode == 200 && res.data.success) {
