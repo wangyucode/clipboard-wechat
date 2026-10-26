@@ -1,14 +1,95 @@
 <!--index.wxml-->
 <view class="container">
-    <view>
-        <text>查询码：</text>
-        <text class='text-query-id'>{{queryId}}</text>
+    <!-- 顶部查询码展示与复制 -->
+    <view class="query-id-box" bindtap="copyQueryId">
+        <view class="query-id-header">
+            <text class="query-id-label">查询码</text>
+            <text class="copy-badge">点击复制</text>
+        </view>
+        <text class="text-query-id">{{queryId || '------'}}</text>
     </view>
 
-    <textarea value='{{text}}' bindinput='bindInputText' maxlength='2000'></textarea>
+    <!-- 密文已锁住状态 -->
+    <view class="lock-panel" wx:if="{{isEncrypted && !isUnlocked}}">
+        <view class="lock-icon">🔒</view>
+        <view class="lock-title">当前剪切板已加密</view>
+        <view class="lock-desc">请输入解密密码查看并编辑明文</view>
+        <input 
+            class="pwd-input" 
+            password="true" 
+            placeholder="输入解密密码" 
+            placeholder-class="pwd-placeholder"
+            value="{{unlockPassword}}" 
+            bindinput="bindUnlockPassword" 
+            confirm-type="done"
+            bindconfirm="unlockContent"
+        />
+        <button class="btn-unlock" type="primary" bindtap="unlockContent">解密解锁</button>
+    </view>
+
+    <!-- 正常文本编辑区（未加密或已解锁） -->
+    <block wx:else>
+        <view class="editor-wrapper">
+            <textarea 
+                value="{{text}}" 
+                bindinput="bindInputText" 
+                maxlength="5000" 
+                placeholder="在此输入文本内容，多设备即时同步..."
+            ></textarea>
+            <view class="word-counter">{{text.length || 0}} / 5000</view>
+        </view>
+
+        <!-- 加密设置栏 -->
+        <view class="encrypt-section">
+            <view class="encrypt-toggle-row">
+                <view class="encrypt-label-group">
+                    <text class="encrypt-title">端到端加密保护</text>
+                    <text class="encrypt-tip">开启后内容经 AES-256-GCM 本地加密后存储</text>
+                </view>
+                <switch 
+                    color="#379392" 
+                    checked="{{encryptEnabled}}" 
+                    bindchange="toggleEncryptSwitch"
+                />
+            </view>
+
+            <!-- 展开的密码输入栏 -->
+            <view class="encrypt-inputs" wx:if="{{encryptEnabled}}">
+                <input 
+                    class="pwd-field" 
+                    password="true" 
+                    placeholder="设置加密密码" 
+                    value="{{encryptPassword}}" 
+                    bindinput="bindEncryptPassword" 
+                />
+                <input 
+                    class="pwd-field" 
+                    password="true" 
+                    placeholder="确认加密密码" 
+                    value="{{encryptPasswordConfirm}}" 
+                    bindinput="bindEncryptPasswordConfirm" 
+                />
+            </view>
+        </view>
+    </block>
+
+    <!-- 广告组件 -->
     <ad-custom unit-id="adunit-443c8f80b0948b01"></ad-custom>
+
+    <!-- 底部操作按钮 -->
     <view id="btn-container">
-        <button id="btn-paste" bindtap="paste" type="secondary" bindtap="checkClipboard">粘贴</button>
-        <button id="btn-save" bindtap="save" type="primary" disabled="{{loading}}" loading="{{loading}}">保存</button>
+        <button 
+            id="btn-paste" 
+            type="secondary" 
+            bindtap="checkClipboard"
+            disabled="{{isEncrypted && !isUnlocked}}"
+        >粘贴系统剪切板</button>
+        <button 
+            id="btn-save" 
+            type="primary" 
+            bindtap="save" 
+            disabled="{{loading || (isEncrypted && !isUnlocked)}}" 
+            loading="{{loading}}"
+        >保存</button>
     </view>
 </view>

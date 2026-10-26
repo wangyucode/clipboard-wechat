@@ -1,0 +1,21 @@
+{
+  "name": "clipboard-wechat",
+  "version": "2.6.0",
+  "description": "微信小程序端剪切板同步工具（支持端到端 AES-256-GCM 加密）",
+  "main": "app.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wangyucode/clipboard-wechat.git"
+  },
+  "keywords": [
+    "clipboard",
+    "wechat-miniprogram",
+    "e2ee",
+    "encryption"
+  ],
+  "author": "wangyucode",
+  "license": "MIT"
+}
