@@ -236,11 +236,10 @@ Page({
         });
       } catch (e) {
         wx.hideLoading();
-        console.error('解密失败详情 stack:', e && e.stack);
-        wx.showModal({
-          title: '解密异常详情',
-          content: (e && e.stack) ? e.stack.substring(0, 300) : String(e),
-          showCancel: false
+        console.error('解密失败:', e);
+        wx.showToast({
+          title: '密码错误',
+          icon: 'error'
         });
       }
     }, 50);
