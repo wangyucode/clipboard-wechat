@@ -4,6 +4,7 @@ const crypto = require('../../utils/crypto.js');
 
 Page({
   data: {
+    windowHeight: 0,
     queryId: '',
     text: '',
     loading: true,
@@ -23,6 +24,17 @@ Page({
   },
 
   onLoad: function () {
+    try {
+      const info = wx.getWindowInfo ? wx.getWindowInfo() : wx.getSystemInfoSync();
+      if (info && info.windowHeight) {
+        this.setData({
+          windowHeight: info.windowHeight
+        });
+      }
+    } catch (e) {
+      console.error('getWindowInfo error:', e);
+    }
+
     wx.showLoading({
       title: '加载中...',
       mask: true

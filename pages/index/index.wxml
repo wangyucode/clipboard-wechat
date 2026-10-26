@@ -1,4 +1,9 @@
 <!--index.wxml-->
+<scroll-view 
+    class="page-scroll" 
+    scroll-y="true" 
+    style="{{windowHeight ? 'height: ' + windowHeight + 'px;' : 'min-height: 100vh;'}} box-sizing: border-box;"
+>
 <view class="container">
     <!-- 顶部查询码展示与复制 -->
     <view class="query-id-box" bindtap="copyQueryId">
@@ -108,3 +113,4 @@
         >保存</button>
     </view>
 </view>
+</scroll-view>
