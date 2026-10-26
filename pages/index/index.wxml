@@ -2,11 +2,11 @@
 <view class="container">
     <!-- 顶部查询码展示与复制 -->
     <view class="query-id-box" bindtap="copyQueryId">
-        <view class="query-id-header">
-            <text class="query-id-label">查询码</text>
-            <text class="copy-badge">点击复制</text>
+        <view class="query-id-left">
+            <view class="query-id-label">查询码</view>
+            <view class="text-query-id">{{queryId || '------'}}</view>
         </view>
-        <text class="text-query-id">{{queryId || '------'}}</text>
+        <view class="btn-copy-action">复制查询码</view>
     </view>
 
     <!-- 密文已锁住状态 -->

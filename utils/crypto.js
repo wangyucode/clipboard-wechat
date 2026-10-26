@@ -1116,7 +1116,20 @@ function bufToB64(bytes) {
     bin += String.fromCharCode(...bytes.subarray(i, i + chunk));
   }
   if (typeof btoa !== "undefined") return btoa(bin);
-  return Buffer.from(bytes).toString("base64");
+  if (typeof Buffer !== "undefined") return Buffer.from(bytes).toString("base64");
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+  let res = "";
+  const len = bytes.length;
+  for (let i = 0; i < len; i += 3) {
+    const b0 = bytes[i];
+    const b1 = i + 1 < len ? bytes[i + 1] : 0;
+    const b2 = i + 2 < len ? bytes[i + 2] : 0;
+    res += chars.charAt(b0 >> 2);
+    res += chars.charAt((b0 & 3) << 4 | b1 >> 4);
+    res += i + 1 < len ? chars.charAt((b1 & 15) << 2 | b2 >> 6) : "=";
+    res += i + 2 < len ? chars.charAt(b2 & 63) : "=";
+  }
+  return res;
 }
 function b64ToBuf(b64) {
   if (typeof atob !== "undefined") {
@@ -1163,8 +1176,56 @@ function getRandomBytes(length) {
   }
   return bytes;
 }
+function utf8Encode(str) {
+  if (typeof TextEncoder !== "undefined") {
+    return new TextEncoder().encode(str);
+  }
+  const bytes = [];
+  for (let i = 0; i < str.length; i++) {
+    let code = str.charCodeAt(i);
+    if (code < 128) {
+      bytes.push(code);
+    } else if (code < 2048) {
+      bytes.push(192 | code >> 6, 128 | code & 63);
+    } else if (code < 55296 || code >= 57344) {
+      bytes.push(224 | code >> 12, 128 | code >> 6 & 63, 128 | code & 63);
+    } else {
+      i++;
+      code = 65536 + ((code & 1023) << 10 | str.charCodeAt(i) & 1023);
+      bytes.push(240 | code >> 18, 128 | code >> 12 & 63, 128 | code >> 6 & 63, 128 | code & 63);
+    }
+  }
+  return new Uint8Array(bytes);
+}
+function utf8Decode(bytes) {
+  if (typeof TextDecoder !== "undefined") {
+    return new TextDecoder().decode(bytes);
+  }
+  let str = "";
+  let i = 0;
+  while (i < bytes.length) {
+    let b0 = bytes[i++];
+    if (b0 < 128) {
+      str += String.fromCharCode(b0);
+    } else if ((b0 & 224) === 192) {
+      let b1 = bytes[i++];
+      str += String.fromCharCode((b0 & 31) << 6 | b1 & 63);
+    } else if ((b0 & 240) === 224) {
+      let b1 = bytes[i++];
+      let b2 = bytes[i++];
+      str += String.fromCharCode((b0 & 15) << 12 | (b1 & 63) << 6 | b2 & 63);
+    } else {
+      let b1 = bytes[i++];
+      let b2 = bytes[i++];
+      let b3 = bytes[i++];
+      let code = ((b0 & 7) << 18 | (b1 & 63) << 12 | (b2 & 63) << 6 | b3 & 63) - 65536;
+      str += String.fromCharCode(55296 + (code >> 10), 56320 + (code & 1023));
+    }
+  }
+  return str;
+}
 function deriveKey(password, salt) {
-  const pwdBytes = typeof TextEncoder !== "undefined" ? new TextEncoder().encode(password) : Buffer.from(password, "utf8");
+  const pwdBytes = utf8Encode(password);
   return pbkdf2(sha256, pwdBytes, salt, { c: PBKDF2_ITERATIONS, dkLen: 32 });
 }
 function encryptText(plaintext, password) {
@@ -1172,7 +1233,7 @@ function encryptText(plaintext, password) {
   const salt = getRandomBytes(SALT_BYTES);
   const iv = getRandomBytes(IV_BYTES);
   const key = deriveKey(password, salt);
-  const ptBytes = typeof TextEncoder !== "undefined" ? new TextEncoder().encode(plaintext) : Buffer.from(plaintext, "utf8");
+  const ptBytes = utf8Encode(plaintext);
   const aes = gcm(key, iv);
   const ct = aes.encrypt(ptBytes);
   return [ENC_PREFIX, bufToB64(salt), bufToB64(iv), bufToB64(ct)].join(":");
@@ -1189,10 +1250,7 @@ function decryptText(token, password) {
   const key = deriveKey(password, salt);
   const aes = gcm(key, iv);
   const ptBytes = aes.decrypt(ct);
-  if (typeof TextDecoder !== "undefined") {
-    return new TextDecoder().decode(ptBytes);
-  }
-  return Buffer.from(ptBytes).toString("utf8");
+  return utf8Decode(ptBytes);
 }
 /*! Bundled license information:
 

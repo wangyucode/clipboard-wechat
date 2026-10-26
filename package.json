@@ -17,5 +17,9 @@
     "encryption"
   ],
   "author": "wangyucode",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@noble/ciphers": "^2.4.0",
+    "@noble/hashes": "^2.4.0"
+  }
 }

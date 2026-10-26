@@ -15,6 +15,48 @@ const releaseNote = {
         name: 'div',
         children: [{
             type: 'text',
+            text: 'v2.6'
+          },
+          {
+            name: 'ul',
+            children: [{
+                name: 'li',
+                attrs: {
+                  style: 'font-size: 12px;'
+                },
+                children: [{
+                  type: 'text',
+                  text: '支持端到端 AES-256-GCM 加密，与 Web 端全面互通'
+                }]
+              },
+              {
+                name: 'li',
+                attrs: {
+                  style: 'font-size: 12px;'
+                },
+                children: [{
+                  type: 'text',
+                  text: '容量上限扩容至 5,000 字，支持实时字数统计'
+                }]
+              },
+              {
+                name: 'li',
+                attrs: {
+                  style: 'font-size: 12px;'
+                },
+                children: [{
+                  type: 'text',
+                  text: '支持点击查询码一键复制，优化视觉与交互体验'
+                }]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        name: 'div',
+        children: [{
+            type: 'text',
             text: 'v2.5'
           },
           {
