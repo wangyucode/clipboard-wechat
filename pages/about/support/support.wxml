@@ -1,7 +1,7 @@
 <!-- pages/my/support/support.wxml -->
 <view class='container-support'>
   <view class="vbox-top">
-    <image class="image-thanks" src="/assets/icon/xiexie.jpg" />
+    <view class="emoji-thanks">☕</view>
     <text class='text-content'>跨平台剪切板的维护更新离不开您的支持！您可以通过以下方式支持我们。</text>
   </view>
   <view class='gray-gap' />

@@ -18,10 +18,11 @@ page {
     font-size: 26rpx;
 }
 
-.image-thanks {
-    width: 320rpx;
-    height: 320rpx;
-    margin-top: 24rpx;
+.emoji-thanks {
+    font-size: 110rpx;
+    margin-top: 36rpx;
+    margin-bottom: 12rpx;
+    text-align: center;
 }
 
 .text-content {

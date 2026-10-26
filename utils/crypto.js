@@ -646,12 +646,7 @@ function rotr(word, shift) {
 function utf8ToBytes(str) {
   if (typeof str !== "string")
     throw new TypeError("string expected");
-  const encoded = new TextEncoder().encode(str);
-  try {
-    return new Uint8Array(encoded);
-  } finally {
-    clean2(encoded);
-  }
+  return utf8Encode(str);
 }
 function kdfInputToBytes(data, errorTitle = "") {
   if (typeof data === "string")
@@ -1067,7 +1062,8 @@ var SHA2_32B = class extends HashMD {
     this.H = H | 0;
   }
   _cloneInto(to) {
-    (to ||= new this.constructor()).set(...this.get());
+    const s = this.get();
+    (to ||= new this.constructor()).set(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7]);
     return this._cloneIntoMeta(to);
   }
   process(view, offset) {
@@ -1135,9 +1131,12 @@ function isEncryptedContent(s) {
 function bufToB64(bytes) {
   if (typeof btoa !== "undefined") {
     let bin = "";
-    const chunk = 32768;
+    const chunk = 1024;
     for (let i = 0; i < bytes.length; i += chunk) {
-      bin += String.fromCharCode(...bytes.subarray(i, i + chunk));
+      const sub = bytes.subarray(i, Math.min(i + chunk, bytes.length));
+      for (let j = 0; j < sub.length; j++) {
+        bin += String.fromCharCode(sub[j]);
+      }
     }
     return btoa(bin);
   }
@@ -1204,9 +1203,6 @@ function getRandomBytes(length) {
   return bytes;
 }
 function utf8Encode(str) {
-  if (typeof TextEncoder !== "undefined") {
-    return new TextEncoder().encode(str);
-  }
   const bytes = [];
   for (let i = 0; i < str.length; i++) {
     let code = str.charCodeAt(i);
@@ -1225,9 +1221,6 @@ function utf8Encode(str) {
   return new Uint8Array(bytes);
 }
 function utf8Decode(bytes) {
-  if (typeof TextDecoder !== "undefined") {
-    return new TextDecoder().decode(bytes);
-  }
   let str = "";
   let i = 0;
   while (i < bytes.length) {
@@ -1251,13 +1244,7 @@ function utf8Decode(bytes) {
   }
   return str;
 }
-if (typeof globalThis !== "undefined" && typeof globalThis.TextEncoder === "undefined") {
-  globalThis.TextEncoder = class {
-    encode(s) {
-      return utf8Encode(s);
-    }
-  };
-}
+// no polyfill needed
 function deriveKey(password, salt) {
   const pwdBytes = utf8Encode(password);
   return pbkdf2(sha256, pwdBytes, salt, { c: PBKDF2_ITERATIONS, dkLen: 32 });
