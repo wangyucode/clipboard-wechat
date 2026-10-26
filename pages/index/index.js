@@ -13,10 +13,13 @@ Page({
     rawCiphertext: '',        // 加密原始密文字符串
     isUnlocked: false,        // 是否已解锁明文
     unlockPassword: '',       // 解锁输入的密码
+    showUnlockPwd: false,     // 解锁密码显隐
 
     encryptEnabled: false,    // 保存时是否启用加密
     encryptPassword: '',      // 保存时的加密密码
+    showEncryptPwd: false,    // 加密密码显隐
     encryptPasswordConfirm: '',// 保存时的确认密码
+    showEncryptConfirmPwd: false, // 确认密码显隐
   },
 
   onLoad: function () {
@@ -167,6 +170,24 @@ Page({
   bindUnlockPassword: function (e) {
     this.setData({
       unlockPassword: e.detail.value
+    });
+  },
+
+  toggleShowUnlockPwd: function () {
+    this.setData({
+      showUnlockPwd: !this.data.showUnlockPwd
+    });
+  },
+
+  toggleShowEncryptPwd: function () {
+    this.setData({
+      showEncryptPwd: !this.data.showEncryptPwd
+    });
+  },
+
+  toggleShowEncryptConfirmPwd: function () {
+    this.setData({
+      showEncryptConfirmPwd: !this.data.showEncryptConfirmPwd
     });
   },
 

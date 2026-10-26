@@ -14,16 +14,21 @@
         <view class="lock-icon">🔒</view>
         <view class="lock-title">当前剪切板已加密</view>
         <view class="lock-desc">请输入解密密码查看并编辑明文</view>
-        <input 
-            class="pwd-input" 
-            password="true" 
-            placeholder="输入解密密码" 
-            placeholder-class="pwd-placeholder"
-            value="{{unlockPassword}}" 
-            bindinput="bindUnlockPassword" 
-            confirm-type="done"
-            bindconfirm="unlockContent"
-        />
+        <view class="pwd-input-wrap">
+            <input 
+                class="pwd-input" 
+                password="{{!showUnlockPwd}}" 
+                placeholder="输入解密密码" 
+                placeholder-class="pwd-placeholder"
+                value="{{unlockPassword}}" 
+                bindinput="bindUnlockPassword" 
+                confirm-type="done"
+                bindconfirm="unlockContent"
+            />
+            <view class="eye-btn" bindtap="toggleShowUnlockPwd">
+                <text>{{showUnlockPwd ? '👁️' : '🙈'}}</text>
+            </view>
+        </view>
         <button class="btn-unlock" type="primary" bindtap="unlockContent">解密解锁</button>
     </view>
 
@@ -55,20 +60,30 @@
 
             <!-- 展开的密码输入栏 -->
             <view class="encrypt-inputs" wx:if="{{encryptEnabled}}">
-                <input 
-                    class="pwd-field" 
-                    password="true" 
-                    placeholder="设置加密密码" 
-                    value="{{encryptPassword}}" 
-                    bindinput="bindEncryptPassword" 
-                />
-                <input 
-                    class="pwd-field" 
-                    password="true" 
-                    placeholder="确认加密密码" 
-                    value="{{encryptPasswordConfirm}}" 
-                    bindinput="bindEncryptPasswordConfirm" 
-                />
+                <view class="pwd-input-wrap">
+                    <input 
+                        class="pwd-field" 
+                        password="{{!showEncryptPwd}}" 
+                        placeholder="设置加密密码" 
+                        value="{{encryptPassword}}" 
+                        bindinput="bindEncryptPassword" 
+                    />
+                    <view class="eye-btn" bindtap="toggleShowEncryptPwd">
+                        <text>{{showEncryptPwd ? '👁️' : '🙈'}}</text>
+                    </view>
+                </view>
+                <view class="pwd-input-wrap">
+                    <input 
+                        class="pwd-field" 
+                        password="{{!showEncryptConfirmPwd}}" 
+                        placeholder="确认加密密码" 
+                        value="{{encryptPasswordConfirm}}" 
+                        bindinput="bindEncryptPasswordConfirm" 
+                    />
+                    <view class="eye-btn" bindtap="toggleShowEncryptConfirmPwd">
+                        <text>{{showEncryptConfirmPwd ? '👁️' : '🙈'}}</text>
+                    </view>
+                </view>
             </view>
         </view>
     </block>
