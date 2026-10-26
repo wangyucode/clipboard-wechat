@@ -180,8 +180,25 @@ function u64Lengths(dataLength, aadLength, isLE2) {
   abool(isLE2);
   const num = new Uint8Array(16);
   const view = createView(num);
-  view.setBigUint64(0, BigInt(aadLength), isLE2);
-  view.setBigUint64(8, BigInt(dataLength), isLE2);
+  if (typeof view.setBigUint64 === 'function' && typeof BigInt !== 'undefined') {
+    view.setBigUint64(0, BigInt(aadLength), isLE2);
+    view.setBigUint64(8, BigInt(dataLength), isLE2);
+  } else {
+    // 64-bit integer fallback for JavaScript environments without BigInt / setBigUint64
+    const setU64 = (offset, num) => {
+      const hi = Math.floor(num / 0x100000000);
+      const lo = num >>> 0;
+      if (isLE2) {
+        view.setUint32(offset, lo, true);
+        view.setUint32(offset + 4, hi, true);
+      } else {
+        view.setUint32(offset, hi, false);
+        view.setUint32(offset + 4, lo, false);
+      }
+    };
+    setU64(0, aadLength);
+    setU64(8, dataLength);
+  }
   return num;
 }
 function isAligned32(bytes) {
@@ -509,7 +526,13 @@ var gcm = /* @__PURE__ */ wrapCipher({ blockSize: 16, nonceLength: 12, tagLength
     } else {
       const nonceLen = EMPTY_BLOCK.slice();
       const view = createView(nonceLen);
-      view.setBigUint64(8, BigInt(nonce.length * 8), false);
+      const bits = nonce.length * 8;
+      if (typeof view.setBigUint64 === 'function' && typeof BigInt !== 'undefined') {
+        view.setBigUint64(8, BigInt(bits), false);
+      } else {
+        view.setUint32(8, Math.floor(bits / 0x100000000), false);
+        view.setUint32(12, bits >>> 0, false);
+      }
       const g = ghash.create(authKey).update(nonce).update(nonceLen);
       g.digestInto(counter);
       g.destroy();
@@ -1110,13 +1133,14 @@ function isEncryptedContent(s) {
   return typeof s === "string" && s.startsWith(`${ENC_PREFIX}:`) && s.split(":").length === 4;
 }
 function bufToB64(bytes) {
-  let bin = "";
-  const chunk = 32768;
-  for (let i = 0; i < bytes.length; i += chunk) {
-    bin += String.fromCharCode(...bytes.subarray(i, i + chunk));
+  if (typeof btoa !== "undefined") {
+    let bin = "";
+    const chunk = 32768;
+    for (let i = 0; i < bytes.length; i += chunk) {
+      bin += String.fromCharCode(...bytes.subarray(i, i + chunk));
+    }
+    return btoa(bin);
   }
-  if (typeof btoa !== "undefined") return btoa(bin);
-  if (typeof Buffer !== "undefined") return Buffer.from(bytes).toString("base64");
   const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
   let res = "";
   const len = bytes.length;
@@ -1141,19 +1165,22 @@ function b64ToBuf(b64) {
     return buf;
   }
   const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-  let clean3 = b64.replace(/[^A-Za-z0-9+/]/g, "");
-  let len = clean3.length;
-  let placeHolders = b64.endsWith("==") ? 2 : b64.endsWith("=") ? 1 : 0;
-  let bytes = new Uint8Array(len * 3 / 4 - placeHolders);
-  let j = 0;
+  let str = b64.replace(/[^A-Za-z0-9+/=]/g, "");
+  let pad = 0;
+  if (str.endsWith("==")) pad = 2;
+  else if (str.endsWith("=")) pad = 1;
+  const len = str.length;
+  const outLen = len * 3 / 4 - pad;
+  const bytes = new Uint8Array(outLen);
+  let p = 0;
   for (let i = 0; i < len; i += 4) {
-    let b0 = chars.indexOf(clean3[i]);
-    let b1 = chars.indexOf(clean3[i + 1]);
-    let b2 = chars.indexOf(clean3[i + 2]);
-    let b3 = chars.indexOf(clean3[i + 3]);
-    bytes[j++] = b0 << 2 | b1 >> 4;
-    if (b2 !== -1 && j < bytes.length) bytes[j++] = (b1 & 15) << 4 | b2 >> 2;
-    if (b3 !== -1 && j < bytes.length) bytes[j++] = (b2 & 3) << 6 | b3;
+    let b0 = chars.indexOf(str[i]);
+    let b1 = chars.indexOf(str[i + 1]);
+    let b2 = str[i + 2] === "=" ? -1 : chars.indexOf(str[i + 2]);
+    let b3 = str[i + 3] === "=" ? -1 : chars.indexOf(str[i + 3]);
+    if (p < outLen) bytes[p++] = b0 << 2 | b1 >> 4;
+    if (b2 !== -1 && p < outLen) bytes[p++] = (b1 & 15) << 4 | b2 >> 2;
+    if (b3 !== -1 && p < outLen) bytes[p++] = (b2 & 3) << 6 | b3;
   }
   return bytes;
 }
@@ -1223,6 +1250,13 @@ function utf8Decode(bytes) {
     }
   }
   return str;
+}
+if (typeof globalThis !== "undefined" && typeof globalThis.TextEncoder === "undefined") {
+  globalThis.TextEncoder = class {
+    encode(s) {
+      return utf8Encode(s);
+    }
+  };
 }
 function deriveKey(password, salt) {
   const pwdBytes = utf8Encode(password);

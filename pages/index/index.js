@@ -187,7 +187,9 @@ Page({
 
     setTimeout(() => {
       try {
+        console.log('开始解密, rawCiphertext:', this.data.rawCiphertext ? this.data.rawCiphertext.substring(0, 30) + '...' : '');
         const decrypted = crypto.decryptText(this.data.rawCiphertext, pwd);
+        console.log('解密成功, 明文长度:', decrypted.length);
         this.setData({
           text: decrypted,
           isUnlocked: true,
@@ -201,11 +203,11 @@ Page({
         });
       } catch (e) {
         wx.hideLoading();
-        console.error('解密失败:', e);
+        console.error('解密失败详情:', e);
         wx.showToast({
-          title: '密码错误或内容已损坏',
+          title: '解密失败: ' + (e.message || '密码错误'),
           icon: 'none',
-          duration: 2500
+          duration: 3000
         });
       }
     }, 50);
