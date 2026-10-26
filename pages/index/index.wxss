@@ -208,20 +208,31 @@ ad-custom {
 /* 底部操作按钮 */
 #btn-container {
   display: flex;
-  gap: 16rpx;
-  margin-top: auto;
+  gap: 20rpx;
+  margin-top: 12rpx;
+  padding-bottom: env(safe-area-inset-bottom, 20rpx);
 }
 
 #btn-paste {
   flex: 1;
-  background-color: #edf2f7;
-  color: #4a5568;
-  font-size: 28rpx;
-  border-radius: 12rpx;
+  height: 96rpx;
+  line-height: 96rpx;
+  background-color: #e2e8f0;
+  color: #2d3748;
+  font-size: 32rpx;
+  font-weight: 500;
+  border-radius: 16rpx;
+  margin: 0;
+  padding: 0;
 }
 
 #btn-save {
   flex: 1.2;
-  font-size: 28rpx;
-  border-radius: 12rpx;
+  height: 96rpx;
+  line-height: 96rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  border-radius: 16rpx;
+  margin: 0;
+  padding: 0;
 }
